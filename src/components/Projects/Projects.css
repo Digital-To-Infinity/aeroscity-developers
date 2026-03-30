@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.projects-section {
+    background: radial-gradient(circle at center,
+            #362a14 0%,
+            #1a1a1a 40%,
+            #050505 80%);
+
+    background-size: 100% 100%;
+    background-position: center;
+    animation: expandContract 3s ease-in-out infinite alternate;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+}
+
+@keyframes expandContract {
+    0% {
+        background-size: 100% 100%;
+    }
+
+    100% {
+        background-size: 180% 180%;
+    }
+}
+
+.center-trigger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    z-index: 10;
+}
+
+.projects-trigger-card {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(12px);
+    width: 300px;
+    height: 350px;
+    border: 1px solid rgba(197, 160, 89, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    cursor: pointer;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.projects-trigger-card:hover {
+    transform: translateY(-10px);
+    border-color: #c5a059;
+    box-shadow: 0 20px 50px rgba(197, 160, 89, 0.2);
+}
+
+.trigger-icon {
+    color: #c5a059;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.4));
+}
+
+.projects-trigger-card h2 {
+    font-family: "Syne", sans-serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.projects-trigger-card p {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.detail-overlay {
+    z-index: 1100;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background: #151515;
+    border: 1px solid #c5a059;
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #c5a059 #222;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #222;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #c5a059;
+    border-radius: 4px;
+}
+
+.list-modal {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    padding-bottom: 15px;
+}
+
+.modal-header h3 {
+    font-family: "Syne", sans-serif;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.gold-text {
+    color: #c5a059;
+}
+
+.close-btn,
+.back-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.close-btn:hover,
+.back-btn:hover {
+    color: #c5a059;
+    background: rgba(197, 160, 89, 0.1);
+}
+
+.back-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.close-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+.projects-grid-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.project-grid-item {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.grid-image {
+    height: 180px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.grid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-grid-item:hover .grid-image img {
+    transform: scale(1.1);
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.project-grid-item:hover .grid-overlay {
+    opacity: 1;
+}
+
+.grid-overlay span {
+    color: #c5a059;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid #c5a059;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.grid-info {
+    padding: 20px;
+}
+
+.grid-info h4 {
+    color: #fff;
+    margin-bottom: 8px;
+    font-family: "Syne", sans-serif;
+    font-size: 1.2rem;
+}
+
+.category-tag {
+    font-size: 0.75rem;
+    color: #c5a059;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(197, 160, 89, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.detail-modal {
+    width: 100%;
+    max-width: 900px;
+}
+
+.detail-body {
+    display: flex;
+    gap: 30px;
+}
+
+.detail-image img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.detail-info h2 {
+    font-family: "Syne", sans-serif;
+    color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.detail-category {
+    color: #c5a059;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.detail-desc {
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.tech-stack h5 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.tags span {
+    background: #252525;
+    color: #eee;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #444;
+    transition: all 0.2s;
+}
+
+.tags span:hover {
+    border-color: #c5a059;
+    color: #c5a059;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.modal-btn.fill {
+    background: linear-gradient(135deg, #c5a059, #b08d45);
+    color: #000;
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+}
+
+.modal-btn.fill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(197, 160, 89, 0.5);
+}
+
+.modal-btn.outline {
+    background: transparent;
+    border: 1px solid #c5a059;
+    color: #c5a059;
+}
+
+.modal-btn.outline:hover {
+    background: rgba(197, 160, 89, 0.1);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .projects-trigger-card {
+        width: 280px;
+        height: 320px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .detail-body {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 425px) {
+    .projects-grid-scroll {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .close-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 375px) {
+    .detail-info h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .grid-info h4 {
+        font-size: 0.8rem;
+    }
+
+    .detail-info h2 {
+        font-size: 1rem;
+    }
+
+    .close-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}

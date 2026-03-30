@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+
+.showcase-section {
+    background-color: #1a1a1a;
+    padding: 80px 20px;
+    overflow-x: hidden;
+}
+
+.showcase-header {
+    text-align: center;
+    margin-bottom: 60px;
+    color: white;
+}
+
+.showcase-header h2 {
+    font-family: "Syne", sans-serif;
+    font-size: 3rem;
+    color: #c5a059;
+    margin-bottom: 10px;
+}
+
+.showcase-header p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.showcase-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.book-row {
+    position: relative;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px;
+}
+
+.center-spine {
+    position: relative;
+    width: 400px;
+    height: 100%;
+    background: #ffffff;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    border-top: 5px solid #c5a059;
+}
+
+.spine-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #3D3D3D;
+    margin-bottom: 5px;
+}
+
+.spine-content h5 {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: #c5a059;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.spine-content p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    color: #3D3D3D;
+    line-height: 1.6;
+}
+
+.wing {
+    position: absolute;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background-color: #000;
+    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    z-index: 5;
+}
+
+.wing img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}
+
+.wing:hover img {
+    opacity: 1;
+}
+
+.left-wing {
+    right: 50%;
+    margin-right: 200px;
+    transform-origin: right center;
+    transform: rotateY(-100deg);
+}
+
+.right-wing {
+    left: 50%;
+    margin-left: 200px;
+    transform-origin: left center;
+    transform: rotateY(100deg);
+}
+
+.book-row.open .left-wing {
+    transform: rotateY(0deg);
+    transition-delay: 0.2s;
+}
+
+.book-row.open .right-wing {
+    transform: rotateY(0deg);
+    transition-delay: 0.8s;
+}
+
+@media (max-width: 1150px) {
+    .center-spine {
+        width: 300px;
+    }
+
+    .wing {
+        width: 250px;
+    }
+
+    .left-wing {
+        margin-right: 150px;
+    }
+
+    .right-wing {
+        margin-left: 150px;
+    }
+}
+
+@media (max-width: 850px) {
+    .book-row {
+        flex-direction: column;
+        height: auto;
+        perspective: none;
+        margin-bottom: 50px;
+        gap: 0;
+    }
+
+    .center-spine {
+        width: 100%;
+        order: 2;
+        z-index: 10;
+        border-top: 5px solid #c5a059;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .wing {
+        position: relative;
+        width: 100%;
+        height: 0;
+        opacity: 0;
+        margin: 0 !important;
+        right: auto;
+        left: auto;
+        overflow: hidden;
+        transition: all 0.8s ease-in-out;
+    }
+
+    .wing img {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .left-wing {
+        order: 1;
+        transform: translateY(30px) !important;
+    }
+
+    .right-wing {
+        order: 3;
+        transform: translateY(-30px) !important;
+    }
+
+    .book-row.open .wing {
+        height: 250px;
+        opacity: 1;
+    }
+
+    .book-row.open .left-wing {
+        transform: translateY(0) !important;
+    }
+
+    .book-row.open .right-wing {
+        transform: translateY(0) !important;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
