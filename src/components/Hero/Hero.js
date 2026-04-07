@@ -8,6 +8,8 @@ import Jnpt from "../../assets/jnpt-highway.png";
 import Railway from "../../assets/railway-line.png";
 import SeaLink from "../../assets/sea-link.png";
 import Port from "../../assets/rewas-port.png";
+import PopUpImg from "../../assets/pop-up-img.png";
+
 
 const Hero = () => {
 
@@ -74,14 +76,27 @@ const Hero = () => {
         <div className="hero-overlay"></div>
 
         <div
-          className="hero-contents main-title"
+          className={`hero-contents main-title ${currentVideo === 1 ? "second-video-layout" : ""}`}
           style={{
             opacity: scrollProgress < 0.15 ? 1 : 0,
             pointerEvents: scrollProgress < 0.15 ? 'auto' : 'none'
           }}
         >
-          <h1>{slides[currentVideo].title}</h1>
-          {slides[currentVideo].subtitle && <p>{slides[currentVideo].subtitle}</p>}
+          {currentVideo === 1 ? (
+            <div className="hero-split-content">
+              <div className="hero-left">
+                <h1>{slides[currentVideo].title}</h1>
+              </div>
+              <div className="hero-right">
+                <img src={PopUpImg} alt="popup" className="pop-up-hero-img" />
+              </div>
+            </div>
+          ) : (
+            <>
+              <h1>{slides[currentVideo].title}</h1>
+              {slides[currentVideo].subtitle && <p>{slides[currentVideo].subtitle}</p>}
+            </>
+          )}
         </div>
 
         {/* --- STAGE 1: CONTENT FROM RIGHT --- */}
