@@ -1,5 +1,6 @@
 import About from "../components/About/About";
 import Hero from "../components/Hero/Hero";
+import PlotCarousel from "../components/PlotCarousel/PlotCarousel";
 import Navbar from "../components/Navbar/Navbar";
 import Investment from "../components/Investment/Investment";
 import Gallery from "../components/Gallery/Gallery";
@@ -11,6 +12,7 @@ const Home = () => {
         <>
             <Navbar />
             <Hero />
+            <PlotCarousel />
             <About />
             <Gallery />
             <Investment />
