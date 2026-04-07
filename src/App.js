@@ -7,6 +7,7 @@ import FloatingContact from "./components/FloatingContact/FloatingContact";
 import ContactUs from "./pages/ContactUs";
 import Project from "./pages/Project";
 import AboutUs from "./pages/AboutUs";
+import Legal from "./pages/Legal";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import BackToTop from "./components/BackToTop/BackToTop";
 import ContactPopup from "./components/ContactPopup/ContactPopup";
@@ -40,6 +41,7 @@ function App() {
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/projects" element={<Project />} />
             <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/legal" element={<Legal />} />
           </Routes>
           <FloatingContact />
           <BackToTop />
