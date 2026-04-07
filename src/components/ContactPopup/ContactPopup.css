@@ -207,8 +207,8 @@
   }
 
   .close-popup-btn {
-    top: -15px;
-    right: -15px;
+    top: -6px;
+    right: -6px;
     padding: 8px;
     z-index: 10001; 
   }

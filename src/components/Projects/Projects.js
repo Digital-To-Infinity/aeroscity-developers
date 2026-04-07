@@ -1,48 +1,55 @@
 import { useState } from "react";
 import "./Projects.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github, ExternalLink, Code2, FolderOpen, ArrowLeft } from "lucide-react";
+import { X, FolderOpen, ArrowLeft } from "lucide-react";
+import kscImg from "../../assets/projects/ksc_township.png";
+import nainaImg from "../../assets/projects/naina_township.png";
 
 const projectsData = [
     {
         id: 1,
-        title: "Aerocity Real Estate",
-        category: "Real Estate",
-        description: "A comprehensive real estate platform featuring interactive plot maps, 3D viewing experiences, and a seamless inquiry system connected to PHP backend.",
-        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop",
-        tech: ["React", "PHP", "PHPMailer", "Framer Motion"],
-        github: "#",
-        live: "#"
+        title: "KSC Township (Karnala-Sai-Chirner)",
+        category: "Smart City Development",
+        description: `OVERVIEW AND ADMINISTRATION:
+• Official Name: Karnala-Sai-Chirner (KSC) New Town.
+• Nodal Agency: MMRDA (appointed as the New Town Development Authority (NTDA) in October 2024).
+
+STRATEGIC LOCATION & CONNECTIVITY:
+The township is designed to be the most well-connected hub in India, leveraging several mega-projects:
+• MTHL (Atal Setu): The 22 km sea bridge provides a 20-minute connection to South Mumbai (Sewri).
+• Navi Mumbai International Airport (NMIA): KSC is built around the influence zone of the airport, expected to be operational by mid-2025.
+• JNPT Port: Proximity to the port makes it a prime location for logistics and international trade.
+• Mass Transit: Includes the Navi Mumbai Metro, the Multi-Modal Corridor (connecting Virar to Alibaug), and the coastal road.
+• Railways: Enhanced connectivity via the Nerul-Uran railway line (including stations like Ranjanpada).
+
+KEY DEVELOPMENT HUBS ("THE CITY OF FUTURE"):
+MMRDA plans to develop specific sectors to ensure KSC is an economic powerhouse:
+• Edu City: A hub for international education, aiming to house campuses of the world’s top universities.
+• Medi City: A world-class healthcare and biotech district.
+• Data Center Hub: Projected to host 65% of India’s data centers, backed by investments from companies like Blackstone and RIL.
+• Global Capability Centers (GCC): Specific zones for MNCs and financial institutions.`,
+        image: kscImg,
     },
     {
         id: 2,
-        title: "Gold & Dark Portfolio",
-        category: "Personal Portfolio",
-        description: "A premium portfolio website designed with a luxury aesthetic. Features advanced animations, modal interactions, and responsive layouts.",
-        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop",
-        tech: ["React", "CSS3", "Lucide React"],
-        github: "#",
-        live: "#"
-    },
-    {
-        id: 3,
-        title: "E-Commerce Dashboard",
-        category: "Dashboard",
-        description: "A full-stack admin panel for managing products, orders, and users. Includes chart visualizations and dark mode support.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
-        tech: ["React", "Node.js", "MongoDB", "Recharts"],
-        github: "#",
-        live: "#"
-    },
-    {
-        id: 4,
-        title: "Travel Agency App",
-        category: "Travel",
-        description: "A booking platform for travel agencies allowing users to browse destinations, book flights, and manage itineraries.",
-        image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000&auto=format&fit=crop",
-        tech: ["React Native", "Firebase", "API"],
-        github: "#",
-        live: "#"
+        title: "NAINA (Navi Mumbai Airport Influence Notified Area)",
+        category: "Urban Planning & Infrastructure",
+        description: `OVERVIEW:
+• NAINA is one of the most significant urban planning projects in India, managed by CIDCO (City and Industrial Development Corporation).
+• This township is a core part of the region's future, designed as a planned "Third Mumbai" to prevent unplanned growth around the upcoming Navi Mumbai International Airport (NMIA).
+
+STRATEGIC LOCATION & CONNECTIVITY:
+• Transportation Corridors: Proximity to the Atal Setu (MTHL) and the Virar-Alibaug Multi-Modal Corridor.
+• Rail Connectivity: Integrated with the Panvel-Karjat suburban rail line and the upcoming Navi Mumbai Metro.
+• Economic Hubs: Planned clusters for IT, trade, services, and "Edu-cities."
+
+KEY DEVELOPMENT (THE 60:40 LAND POOLING MODEL):
+Unlike traditional land acquisition, NAINA uses a Town Planning Scheme (TPS):
+• Landowner Contribution (60%): Landowners surrender 60% of their land to CIDCO for city-level infrastructure like 30-meter wide roads, parks, schools, and hospitals.
+• Returned Land (40%): In exchange, CIDCO returns 40% of the land to the owner as a "Final Plot" with a high FSI of 2.5 for premium development.
+• Development Status: Divided into 12 distinct schemes (TPS). TPS 1 & 2 are the most advanced, with final approvals and property cards being distributed. TPS 3 to 7 have received preliminary approval and infrastructure work is underway.
+• Betterment Charges: In 2025, CIDCO significantly reduced betterment charges (from 50% to 0.05%) to encourage faster development and affordability.`,
+        image: nainaImg,
     }
 ];
 
@@ -87,6 +94,7 @@ const Projects = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
+                        onClick={closeAll}
                     >
                         <motion.div
                             className="modal-content list-modal"
@@ -94,6 +102,7 @@ const Projects = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.8, opacity: 0 }}
                             transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             <div className="modal-header">
                                 <h3>My <span className="gold-text">Work</span></h3>
@@ -136,6 +145,7 @@ const Projects = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
+                        onClick={closeAll}
                     >
                         <motion.div
                             className="modal-content detail-modal"
@@ -143,6 +153,7 @@ const Projects = () => {
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 100, opacity: 0 }}
                             transition={{ type: "spring", stiffness: 120, damping: 15 }}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             <div className="modal-header">
                                 <button className="back-btn" onClick={() => setSelectedProject(null)}>
@@ -163,24 +174,6 @@ const Projects = () => {
                                     <span className="detail-category">{selectedProject.category}</span>
 
                                     <p className="detail-desc">{selectedProject.description}</p>
-
-                                    <div className="tech-stack">
-                                        <h5>Technologies:</h5>
-                                        <div className="tags">
-                                            {selectedProject.tech.map((t, i) => (
-                                                <span key={i}><Code2 size={14} /> {t}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="action-buttons">
-                                        <a href={selectedProject.github} target="_blank" rel="noreferrer" className="modal-btn outline">
-                                            <Github size={18} /> GitHub
-                                        </a>
-                                        <a href={selectedProject.live} target="_blank" rel="noreferrer" className="modal-btn fill">
-                                            <ExternalLink size={18} /> Live Demo
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
 
