@@ -6,6 +6,7 @@ import Investment from "../components/Investment/Investment";
 import Gallery from "../components/Gallery/Gallery";
 import Footer from "../components/Footer/Footer";
 import QuickInquiry from "../components/QuickInquiry/QuickInquiry";
+import Testimonials from "../components/Testimonials/Testimonials";
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <About />
             <Gallery />
             <Investment />
+            <Testimonials />
             <QuickInquiry />
             <Footer />
         </>
