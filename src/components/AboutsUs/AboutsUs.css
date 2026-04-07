@@ -15,7 +15,7 @@
 }
 
 .section-padding {
-    padding: 120px 0;
+    padding: 60px 0;
 }
 
 h1,
@@ -367,6 +367,12 @@ h3 {
 
     .huge-text {
         font-size: 3rem;
+    }
+
+    .blueprint-steps {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        gap: 50px;
     }
 }
 
