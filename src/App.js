@@ -9,6 +9,7 @@ import Project from "./pages/Project";
 import AboutUs from "./pages/AboutUs";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import BackToTop from "./components/BackToTop/BackToTop";
+import ContactPopup from "./components/ContactPopup/ContactPopup";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
           </Routes>
           <FloatingContact />
           <BackToTop />
+          <ContactPopup />
         </>
       )}
     </>

@@ -1,0 +1,241 @@
+.contact-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.contact-popup-container {
+  background: #111;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  overflow: visible; /* Important: allow close button to pop out */
+}
+
+.popup-scrollable-content {
+  max-height: 85vh; /* Slightly smaller than overlay to fit center */
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-right: 5px; /* Tiny space if needed */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.popup-scrollable-content::-webkit-scrollbar {
+  display: none;
+}
+
+.popup-scrollable-content::-webkit-scrollbar-thumb:hover {
+  background: #c5a059;
+}
+
+.close-popup-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+  z-index: 10001; /* Ensure it's above the image */
+}
+
+.close-popup-btn:hover {
+  color: #fff;
+}
+
+.popup-image-container {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(197, 160, 89, 0.1);
+  position: relative;
+  height: 250px;
+}
+
+.popup-top-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.popup-image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.popup-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  /* Slightly smaller to fit better with image */
+  background: linear-gradient(to right, #c5a059, #f0e68c, #c5a059);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.popup-form {
+  display: grid;
+  gap: 15px;
+}
+
+.popup-form-group {
+  position: relative;
+}
+
+.popup-form-group input,
+.popup-form-group textarea {
+  width: 100%;
+  padding: 12px;
+  background: rgba(18, 18, 18, 0.9);
+  border: 1px solid #222;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.popup-form-group textarea {
+  height: 100px;
+  resize: none;
+}
+
+.popup-form-group input:focus,
+.popup-form-group textarea:focus {
+  border-color: #c5a059;
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+}
+
+.popup-submit-btn {
+  background: #a67c13;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+.popup-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+}
+
+.popup-submit-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.popup-show {
+  animation: popupFadeIn 0.3s forwards;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-popup-overlay {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-top: -50px;
+  }
+
+  .contact-popup-container {
+    padding: 15px;
+    width: 92%;
+    border-radius: 8px;
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+  }
+
+  .popup-scrollable-content {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .close-popup-btn {
+    top: -15px;
+    right: -15px;
+    padding: 8px;
+    z-index: 10001; 
+  }
+
+  .popup-image-container {
+    height: 160px;
+    margin-bottom: 15px;
+  }
+
+  .popup-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .popup-form {
+    gap: 10px;
+  }
+
+  .popup-form-group input,
+  .popup-form-group textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .popup-submit-btn {
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+}
