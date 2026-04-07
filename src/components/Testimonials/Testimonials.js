@@ -10,7 +10,8 @@ const testimonials = [
     role: "Property Investor",
     content: "Aerocity is the gold standard for plot investments. Their transparency and professional approach made my investment journey seamless. The appreciation potential here is huge!",
     rating: 5,
-    location: "Mumbai, Maharashtra"
+    location: "Mumbai, Maharashtra",
+    image: "https://i.pravatar.cc/150?u=vikram"
   },
   {
     id: 2,
@@ -18,7 +19,8 @@ const testimonials = [
     role: "Home Owner",
     content: "Building my dream home started with the right plot. Aerocity provided a stress-free experience from registration to possession. Highly reliable developer!",
     rating: 5,
-    location: "Pune, Maharashtra"
+    location: "Pune, Maharashtra",
+    image: "https://i.pravatar.cc/150?u=sneha"
   },
   {
     id: 3,
@@ -26,7 +28,8 @@ const testimonials = [
     role: "Business Owner",
     content: "I purchased an industrial plot for my logistics venture. The infrastructure connectivity promised by Aerocity is exceptional. A top-tier developer for professionals.",
     rating: 4,
-    location: "Thane, Maharashtra"
+    location: "Thane, Maharashtra",
+    image: "https://i.pravatar.cc/150?u=amit"
   },
   {
     id: 4,
@@ -34,7 +37,8 @@ const testimonials = [
     role: "Consultant",
     content: "The ROI I've seen in just 6 months is mind-blowing. Aerocity projects are in high-growth corridors. If you're looking for real wealth, start here.",
     rating: 5,
-    location: "Navi Mumbai, Maharashtra"
+    location: "Navi Mumbai, Maharashtra",
+    image: "https://i.pravatar.cc/150?u=rohan"
   },
   {
     id: 5,
@@ -42,7 +46,8 @@ const testimonials = [
     role: "NR Investor",
     content: "Being an NRI, trust was my biggest concern. Aerocity team made everything clear and simple. Their digital documentation process is efficient and trustworthy.",
     rating: 5,
-    location: "Dubai, UAE"
+    location: "Dubai, UAE",
+    image: "https://i.pravatar.cc/150?u=ananya"
   }
 ];
 
@@ -142,6 +147,9 @@ const Testimonials = () => {
                   </div>
                   <p className="testimonial-text">"{item.content}"</p>
                   <div className="testimonial-footer">
+                    <div className="user-avatar">
+                      <img src={item.image} alt={item.name} />
+                    </div>
                     <div className="user-info">
                       <h3>{item.name}</h3>
                       <span>{item.role} • {item.location}</span>

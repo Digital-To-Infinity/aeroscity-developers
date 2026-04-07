@@ -16,13 +16,13 @@ const ContactPopup = () => {
     message: ''
   });
 
-  // Handle popup appearance every 10 seconds
+  // Handle popup appearance every 30 seconds
   useEffect(() => {
     let timer;
     if (!isOpen && !isSubmitted) {
       timer = setTimeout(() => {
         setIsOpen(true);
-      }, 10000); 
+      }, 30000); 
     }
     return () => clearTimeout(timer);
   }, [isOpen, isSubmitted]);
