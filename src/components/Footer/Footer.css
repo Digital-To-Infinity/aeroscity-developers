@@ -136,6 +136,16 @@
     color: #888;
 }
 
+.footer-bottom a {
+    color: #c5a059;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 900px) {
     .footer-container {
         gap: 40px;

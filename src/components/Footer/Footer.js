@@ -86,7 +86,7 @@ const Footer = () => {
 
             {/* --- Copyright Bar --- */}
             <div className="footer-bottom">
-                <p>&copy; {currentYear} Aerocity Developers & Consultants. All Rights Reserved. | Crafted By Dignity To Infinity</p>
+                <p>&copy; {currentYear} Aerocity Developers & Consultants. All Rights Reserved. | <a href="https://digitaltoinfinity.com/" target="_blank" rel="noopener noreferrer">Crafted By Dignity To Infinity</a></p>
             </div>
         </footer>
     );
