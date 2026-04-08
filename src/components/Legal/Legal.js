@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import './Legal.css';
-import legalImg from '../assets/legal_concept.png';
-import Navbar from '../components/Navbar/Navbar';
-import Footer from '../components/Footer/Footer';
+import legalImg from '../../assets/legal_concept.png';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 
 const Legal = () => {
     useEffect(() => {
