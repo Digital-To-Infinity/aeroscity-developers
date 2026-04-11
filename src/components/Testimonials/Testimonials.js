@@ -133,15 +133,15 @@ const Testimonials = () => {
               >
                 <div className="testimonial-card">
                   <div className="quote-icon-top">
-                    <Quote size={40} fill="#c5a059" stroke="#c5a059" opacity={0.2} />
+                    <Quote size={40} fill="#CA1D37" stroke="#CA1D37" />
                   </div>
                   <div className="rating-stars">
                     {[...Array(5)].map((_, i) => (
                       <Star 
                         key={i} 
                         size={16} 
-                        fill={i < item.rating ? "#c5a059" : "none"} 
-                        stroke="#c5a059" 
+                        fill={i < item.rating ? "#CA1D37" : "none"} 
+                        stroke="#CA1D37" 
                       />
                     ))}
                   </div>

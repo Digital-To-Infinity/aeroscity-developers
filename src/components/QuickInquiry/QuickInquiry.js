@@ -72,7 +72,7 @@ const QuickInquiry = () => {
            transition={{ duration: 0.8, delay: 0.4 }}
         >
           {isSubmitted ? (
-            <div style={{ textAlign: 'center', color: '#c5a059', padding: '20px', fontSize: '1.2rem', fontWeight: '700' }}>
+            <div style={{ textAlign: 'center', color: '#CA1D37', padding: '20px', fontSize: '1.2rem', fontWeight: '700' }}>
               Thank you! Our consultant will contact you shortly.
             </div>
           ) : (

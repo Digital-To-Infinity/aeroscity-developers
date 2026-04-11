@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Projects.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, FolderOpen, ArrowLeft } from "lucide-react";
+import { X, ArrowRight } from "lucide-react";
 import kscImg from "../../assets/projects/ksc_township.png";
 import nainaImg from "../../assets/projects/naina_township.png";
+import raigadImg from "../../assets/projects/raigad_pen.png";
+
 
 const projectsData = [
     {
@@ -50,140 +52,140 @@ Unlike traditional land acquisition, NAINA uses a Town Planning Scheme (TPS):
 • Development Status: Divided into 12 distinct schemes (TPS). TPS 1 & 2 are the most advanced, with final approvals and property cards being distributed. TPS 3 to 7 have received preliminary approval and infrastructure work is underway.
 • Betterment Charges: In 2025, CIDCO significantly reduced betterment charges (from 50% to 0.05%) to encourage faster development and affordability.`,
         image: nainaImg,
+    },
+    {
+        id: 3,
+        title: "Raigad Pen Growth Center",
+        category: "Economic Hub & Industrial Development",
+        description: `OVERVIEW:
+• Raigad Pen Growth Center is a strategic initiative by the MMRDA to decentralize urban growth and foster economic development in the Raigad district.
+• It is designed to be a self-sustained industrial and commercial hub, leveraging Raigad's natural and geographical advantages.
+
+STRATEGIC LOCATION & CONNECTIVITY:
+• Virar-Alibaug Multi-Modal Corridor: This major expressway will pass through the region, slashing travel times to Mumbai, JNPT, and Navi Mumbai.
+• Proximity to JNPT: Being close to India's largest container port, it serves as an ideal location for logistics and warehousing hubs.
+• Upcoming New Townships: Integrates with the broader vision of "Third Mumbai" and sustainable urban expansion in the Pen-Alibaug belt.
+
+ECONOMIC & INDUSTRIAL FOCUS:
+• Logistics Parks: Planned as a primary hub for global supply chain management and storage facilities.
+• Agro-Industry & Manufacturing: Encouraging local and international industries to set up units, creating thousands of jobs.
+• Residential Development: Providing affordable and high-quality housing for the workforce and investors in a green, planned environment.`,
+        image: raigadImg,
     }
+
 ];
 
 const Projects = () => {
-    const [isListOpen, setIsListOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
 
-    // Close everything
-    const closeAll = () => {
-        setIsListOpen(false);
-        setSelectedProject(null);
-    };
+    useEffect(() => {
+        if (selectedProject) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [selectedProject]);
 
     return (
         <section className="projects-section" id="projects">
-            <div className="container center-trigger">
-
-                {/* --- MAIN TRIGGER CARD --- */}
-                <motion.div
-                    className="projects-trigger-card"
-                    onClick={() => setIsListOpen(true)}
-                    whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(197, 160, 89, 0.4)" }}
-                    whileTap={{ scale: 0.95 }}
+            <div className="container">
+                <motion.div 
+                    className="projects-header"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <div className="trigger-icon">
-                        <FolderOpen size={60} strokeWidth={1.5} />
-                    </div>
-                    <h2>View All Projects</h2>
-                    <p>Click to explore my work gallery</p>
+                    <span className="section-subtitle">Our Portfolio</span>
+                    <h2 className="section-title">Strategic <span className="highlight">Projects</span></h2>
+                    <div className="title-underline"></div>
                 </motion.div>
 
-            </div>
-
-            {/* --- PROJECTS LIST MODAL --- */}
-            <AnimatePresence>
-                {isListOpen && (
-                    <motion.div
-                        className="modal-overlay"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={closeAll}
-                    >
+                <div className="projects-grid">
+                    {projectsData.map((project, index) => (
                         <motion.div
-                            className="modal-content list-modal"
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.8, opacity: 0 }}
-                            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                            onClick={(e) => e.stopPropagation()}
+                            key={project.id}
+                            className="project-card"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            onClick={() => setSelectedProject(project)}
                         >
-                            <div className="modal-header">
-                                <h3>My <span className="gold-text">Work</span></h3>
-                                <button className="close-btn" onClick={closeAll}>
-                                    <X />
-                                </button>
+                            <div className="project-image-container">
+                                <img src={project.image} alt={project.title} className="project-image" />
+                                <div className="project-overlay">
+                                    <div className="view-btn">
+                                        <span>View details</span>
+                                        <ArrowRight size={18} />
+                                    </div>
+                                </div>
                             </div>
-
-                            <div className="projects-grid-scroll">
-                                {projectsData.map((project) => (
-                                    <motion.div
-                                        key={project.id}
-                                        className="project-grid-item"
-                                        onClick={() => setSelectedProject(project)}
-                                        whileHover={{ y: -5, borderColor: "#c5a059" }}
-                                    >
-                                        <div className="grid-image">
-                                            <img src={project.image} alt={project.title} />
-                                            <div className="grid-overlay">
-                                                <span>View Details</span>
-                                            </div>
-                                        </div>
-                                        <div className="grid-info">
-                                            <h4>{project.title}</h4>
-                                            <span className="category-tag">{project.category}</span>
-                                        </div>
-                                    </motion.div>
-                                ))}
+                            <div className="project-info">
+                                <span className="project-category">{project.category}</span>
+                                <h3 className="project-title">{project.title}</h3>
                             </div>
                         </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    ))}
+                </div>
+            </div>
 
             {/* --- PROJECT DETAIL MODAL --- */}
             <AnimatePresence>
                 {selectedProject && (
                     <motion.div
-                        className="modal-overlay detail-overlay"
+                        className="modal-overlay"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onClick={closeAll}
+                        onClick={() => setSelectedProject(null)}
                     >
                         <motion.div
-                            className="modal-content detail-modal"
-                            initial={{ y: 100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: 100, opacity: 0 }}
-                            transition={{ type: "spring", stiffness: 120, damping: 15 }}
+                            className="project-modal-content"
+                            initial={{ y: 50, opacity: 0, scale: 0.95 }}
+                            animate={{ y: 0, opacity: 1, scale: 1 }}
+                            exit={{ y: 50, opacity: 0, scale: 0.95 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="modal-header">
-                                <button className="back-btn" onClick={() => setSelectedProject(null)}>
-                                    <ArrowLeft /> Back to List
-                                </button>
-                                <button className="close-btn" onClick={closeAll}>
-                                    <X />
-                                </button>
-                            </div>
+                            <button className="modal-close-btn" onClick={() => setSelectedProject(null)}>
+                                <X size={24} />
+                            </button>
 
-                            <div className="detail-body">
-                                <div className="detail-image">
+                            <div className="modal-scroll-area">
+                                <div className="modal-hero">
                                     <img src={selectedProject.image} alt={selectedProject.title} />
+                                    <div className="modal-hero-overlay">
+                                        <span className="modal-category">{selectedProject.category}</span>
+                                        <h2 className="modal-title">{selectedProject.title}</h2>
+                                    </div>
                                 </div>
 
-                                <div className="detail-info">
-                                    <h2>{selectedProject.title}</h2>
-                                    <span className="detail-category">{selectedProject.category}</span>
-
-                                    <p className="detail-desc">{selectedProject.description}</p>
+                                <div className="modal-body">
+                                    <div className="description-content">
+                                        {selectedProject.description.split('\n\n').map((paragraph, i) => (
+                                            <div key={i} className="description-paragraph">
+                                                {paragraph.split('\n').map((line, j) => {
+                                                    if (line.endsWith(':') || (line.startsWith('•') === false && line === line.toUpperCase() && line.length > 5)) {
+                                                        return <h4 key={j} className="desc-heading">{line}</h4>;
+                                                    }
+                                                    return <p key={j} className="desc-text">{line}</p>;
+                                                })}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
-
         </section>
     );
 };
 
-export default Projects;
+
+export default Projects;

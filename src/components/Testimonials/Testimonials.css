@@ -1,11 +1,9 @@
 .testimonials-section {
-  background: #0d0d0d;
+  background: #ffffff;
   padding: 30px;
   color: #fff;
   overflow: hidden;
   position: relative;
-  border-top: 1px solid rgba(197, 160, 89, 0.1);
-  border-bottom: 1px solid rgba(197, 160, 89, 0.1);
 }
 
 .testimonials-container {
@@ -19,7 +17,7 @@
 }
 
 .testimonials-badge {
-  color: #c5a059;
+  color: #CA1D37;
   letter-spacing: 5px;
   font-size: 0.85rem;
   font-weight: 700;
@@ -43,7 +41,7 @@
 .testimonials-underline {
   width: 100px;
   height: 4px;
-  background: linear-gradient(to right, transparent, #c5a059, transparent);
+  background: linear-gradient(to right, transparent, #CA1D37, transparent);
   margin: 15px auto;
 }
 
@@ -68,8 +66,7 @@
 }
 
 .testimonial-card {
-  background: rgba(20, 20, 20, 0.8);
-  border: 1px solid rgba(197, 160, 89, 0.2);
+  background: #f4f7f6;
   border-radius: 20px;
   padding: 50px 30px;
   text-align: left;
@@ -78,16 +75,19 @@
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.5s ease;
-  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
 }
 
 .testimonial-card:hover {
   transform: translateY(-10px);
-  border-color: #c5a059;
   box-shadow: 0 10px 30px rgba(197, 160, 89, 0.1);
-  background: rgba(30, 30, 30, 0.9);
+  background: #1a1a1a;
+}
+
+.testimonial-card:hover .testimonial-text,
+.testimonial-card:hover .user-info span {
+  color: #ffffff !important;
 }
 
 .quote-icon-top {
@@ -109,7 +109,7 @@
   color: #ddd;
   margin-bottom: 40px;
   font-style: italic;
-  font-family: serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .testimonial-footer {
@@ -146,14 +146,13 @@
 .user-info h3 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #fff;
   margin: 0;
   letter-spacing: 0.5px;
 }
 
 .user-info span {
   font-size: 0.9rem;
-  color: #c5a059;
+  color: #1a1a1a;
   font-weight: 500;
   display: block;
   margin-top: 5px;

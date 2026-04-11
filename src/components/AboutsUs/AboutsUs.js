@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import "./AboutsUs.css";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Compass, Ruler, Layers, Key, ShieldCheck, Gem, Users, TrendingUp } from "lucide-react";
+import { ShieldCheck, Gem, Users, TrendingUp } from "lucide-react";
 
 // --- Animation Variants ---
 const textReveal = {
@@ -9,28 +9,37 @@ const textReveal = {
   visible: { y: 0, opacity: 1, skewY: 0, transition: { duration: 0.8, ease: [0.6, 0.01, 0.05, 0.95] } }
 };
 
-// --- 3D Card Component (More Animated) ---
-const ValueCard3D = ({ icon: Icon, title, desc }) => {
+// --- 3D Card Component (Enhanced) ---
+const ValueCard3D = ({ icon: Icon, title, desc, index }) => {
   return (
     <motion.div
       className="value-card-3d"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 50, rotateX: 20 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
       viewport={{ once: true }}
-      whileHover={{
-        y: -15,
-        rotateX: 5,
-        rotateY: -5,
-        boxShadow: "0 20px 50px rgba(197, 160, 89, 0.2)"
+      transition={{
+        duration: 0.8,
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1]
       }}
-      transition={{ type: "spring", stiffness: 100 }}
+      whileHover={{
+        y: -20,
+        rotateX: -5,
+        rotateY: 5,
+        transition: { duration: 0.3 }
+      }}
     >
-      <div className="card-border-glow"></div>
-      <div className="icon-wrapper">
-        <Icon size={36} />
+      <div className="card-background-pattern"></div>
+      <div className="card-hover-accent"></div>
+      <div className="icon-container">
+        <div className="icon-circle-bg"></div>
+        <Icon size={32} className="card-icon" />
       </div>
-      <h3>{title}</h3>
-      <p>{desc}</p>
+      <div className="card-content">
+        <h3>{title}</h3>
+        <p>{desc}</p>
+      </div>
+      <div className="card-footer-line"></div>
     </motion.div>
   );
 };
@@ -80,24 +89,27 @@ const AboutsUs = () => {
             </motion.span>
           </div>
           <div className="overflow-hidden">
-            <motion.h1 variants={textReveal} initial="hidden" animate="visible" custom={0.1}>
+            <motion.h1
+              variants={textReveal}
+              initial="hidden"
+              animate="visible"
+              custom={0.1}
+              className="hero-title-white"
+            >
               CRAFTING THE
             </motion.h1>
           </div>
           <div className="overflow-hidden">
-            <motion.h1 variants={textReveal} initial="hidden" animate="visible" custom={0.3} className="gold-text-hero">
-              GOLD STANDARD.
+            <motion.h1
+              variants={textReveal}
+              initial="hidden"
+              animate="visible"
+              custom={0.3}
+              className="hero-title-white"
+            >
+              GOLDEN VISION.
             </motion.h1>
           </div>
-
-          <motion.div
-            className="scroll-icon"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1 }}
-          >
-            <ArrowDown className="bounce-gold" size={24} />
-          </motion.div>
         </div>
       </section>
 
@@ -108,7 +120,7 @@ const AboutsUs = () => {
 
           {/* Sticky Left Side */}
           <div className="blueprint-sticky">
-            <h2 className="huge-text">THE<br /><span className="gold-stroke"> PLAN</span></h2>
+            <h2 className="huge-text">Registration<br /><span className="gold-stroke"> STEPS</span></h2>
             <div className="gold-line-vertical"></div>
           </div>
 
@@ -170,28 +182,38 @@ const AboutsUs = () => {
       {/* --- SECTION 4: 3D Core Values (Animated Cards) --- */}
       <section className="values-section section-padding">
         <div className="container">
-          <motion.div className="section-header center">
+          <motion.div
+            className="section-header center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2>Our Core <span className="gold-text">Values</span></h2>
             <p>The pillars that hold up every Aerocity project.</p>
           </motion.div>
 
           <div className="cards-grid-3d">
             <ValueCard3D
+              index={0}
               icon={ShieldCheck}
               title="Transparency"
               desc="Crystal clear documentation. Zero hidden clauses. We believe trust is the ultimate currency."
             />
             <ValueCard3D
+              index={1}
               icon={Gem}
               title="Premium Quality"
               desc="From location selection to infrastructure, we settle for nothing less than the gold standard."
             />
             <ValueCard3D
+              index={2}
               icon={TrendingUp}
               title="High Growth"
               desc="Strategic locations in NAINA and KSC zones ensuring maximum appreciation for your investment."
             />
             <ValueCard3D
+              index={3}
               icon={Users}
               title="Client Focus"
               desc="A dedicated relationship manager for every client, guiding you from site visit to possession."

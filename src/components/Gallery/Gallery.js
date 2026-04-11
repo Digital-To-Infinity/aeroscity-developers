@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import './Gallery.css';
-import PlotView1 from "../../assets/plot-view1.png";
-import PlotView2 from "../../assets/plot-view2.png";
-import PlotDemo1 from "../../assets/plot-demacration1.png";
-import PlotDemo2 from "../../assets/plot-demacration2.png";
+import PlotView1 from "../../assets/plot-view1.jpeg";
+import PlotView2 from "../../assets/plot-view2.jpeg";
+import PlotDemo1 from "../../assets/plot-demacration1.jpeg";
+import PlotDemo2 from "../../assets/plot-demacration2.jpeg";
 import PlotBookings1 from "../../assets/plot-bookings1.png";
 import PlotBookings2 from "../../assets/plot-bookings2.png";
-import PlotRegistration1 from "../../assets/plot-registration1.png";
-import PlotRegistration2 from "../../assets/plot-registration2.png";
+import PlotRegistration1 from "../../assets/plot-registration1.jpeg";
+import PlotRegistration2 from "../../assets/plot-registration2.jpeg";
 
 const Gallery = () => {
 

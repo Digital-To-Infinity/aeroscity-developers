@@ -18,7 +18,7 @@ const About = () => {
       id: 2,
       icon: <MapPin size={40} />,
       title: "Mumbai 3.0 Vision",
-      desc: " actively shaping the future of Third Mumbai, offering prime opportunities near Navi Mumbai International Airport and Panvel."
+      desc: "Actively shaping the future of Third Mumbai, offering prime opportunities near Navi Mumbai International Airport and Panvel."
     },
     {
       id: 3,

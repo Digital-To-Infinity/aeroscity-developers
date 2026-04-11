@@ -118,14 +118,6 @@ const Investment = () => {
             ))}
           </div>
 
-          {/* Navigation Arrows */}
-          {/* <button className="carousel-arrow prev" onClick={prevSlide}>
-            <i className="fas fa-chevron-left"></i>
-          </button>
-          <button className="carousel-arrow next" onClick={nextSlide}>
-            <i className="fas fa-chevron-right"></i>
-          </button> */}
-
           {/* Indicators */}
           <div className="carousel-indicators">
             {newsItems.map((_, index) => (

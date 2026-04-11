@@ -1,7 +1,7 @@
 .legal-page {
     background-color: #ffffff;
     color: #333;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif;
     padding-top: 80px;
     min-height: 100vh;
 }
@@ -79,21 +79,10 @@
     position: relative;
 }
 
-.legal-content h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background: #1a3c34;
-    border-radius: 2px;
-}
-
 .legal-content p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #555;
+    color: #1a1a1a;
     margin-bottom: 20px;
 }
 
@@ -107,7 +96,7 @@
     padding-left: 30px;
     position: relative;
     font-size: 1.05rem;
-    color: #444;
+    color: #1a1a1a;
 }
 
 .legal-features li::before {
@@ -136,23 +125,21 @@
 .assurance-card:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transform: translateY(-5px);
-    border-color: #1a3c34;
 }
 
 .assurance-card h3 {
-    color: #1a3c34;
     margin-bottom: 15px;
     font-size: 1.3rem;
 }
 
 .assurance-card p {
     font-size: 0.95rem;
-    color: #666;
+    color: #1a1a1a;
     margin-bottom: 0;
 }
 
 .promise-box {
-    background: #1a3c34;
+    background: #f4f7f6;
     color: #fff;
     padding: 60px;
     border-radius: 20px;

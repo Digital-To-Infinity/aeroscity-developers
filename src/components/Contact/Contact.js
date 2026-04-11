@@ -104,8 +104,8 @@ const Contact = () => {
                                 <div style={{ marginBottom: '20px', color: '#2ecc71' }}>
                                     <Send size={48} />
                                 </div>
-                                <h3 style={{ color: '#fff', marginBottom: '10px' }}>Message Sent!</h3>
-                                <p style={{ color: '#ccc' }}>Thank you for reaching out. We will get back to you shortly.</p>
+                                <h3 style={{ color: '#CA1D37', marginBottom: '10px' }}>Message Sent!</h3>
+                                <p style={{ color: '#1a1a1a' }}>Thank you for reaching out. We will get back to you shortly.</p>
                             </motion.div>
                         ) : (
                             <>

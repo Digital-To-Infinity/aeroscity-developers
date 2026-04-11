@@ -1,5 +1,6 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './PlotCarousel.css';
 import PetrolPump from '../../assets/petrol_pump.png';
 import Factory from '../../assets/factory_plot.png';
@@ -8,119 +9,126 @@ import Warehouse from '../../assets/warehouse_plot.png';
 import Investment from '../../assets/investment_plot.png';
 
 const plotCategories = [
-  { id: 1, title: 'Plots for Petrolpump', image: PetrolPump, tag: 'Commercial' },
-  { id: 2, title: 'Plots for Factories', image: Factory, tag: 'Industrial' },
-  { id: 3, title: 'Residential Plots', image: Residential, tag: 'Lifestyle' },
-  { id: 4, title: 'Plots For Warehouse', image: Warehouse, tag: 'Logistics' },
-  { id: 5, title: 'Investment Plots', image: Investment, tag: 'High Growth' },
+  { id: 1, title: 'Petrolpump', image: PetrolPump, tag: 'Commercial', location: 'Panvel-Vira Corridor' },
+  { id: 2, title: 'Factories', image: Factory, tag: 'Industrial', location: 'Navi Mumbai Extension' },
+  { id: 3, title: 'Residential', image: Residential, tag: 'Lifestyle', location: 'Near Upcoming Airport' },
+  { id: 4, title: 'Warehouse', image: Warehouse, tag: 'Logistics', location: 'JNPT Port Proximity' },
+  { id: 5, title: 'Investment', image: Investment, tag: 'High Growth', location: 'Mumbai 3.0 Strategic Zone' },
 ];
 
 const PlotCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(2); 
   const [isHovered, setIsHovered] = useState(false);
-  const [itemsToShow, setItemsToShow] = useState(3);
-  const trackRef = useRef(null);
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
   useEffect(() => {
-    const updateItemsToShow = () => {
-      if (window.innerWidth <= 768) {
-        setItemsToShow(1);
-      } else if (window.innerWidth <= 1100) {
-        setItemsToShow(2);
-      } else {
-        setItemsToShow(3);
-      }
-    };
-
-    updateItemsToShow();
-    window.addEventListener('resize', updateItemsToShow);
-    return () => window.removeEventListener('resize', updateItemsToShow);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    if (isHovered) return;
-
-    const interval = setInterval(() => {
-      handleNext();
-    }, 4500);
-
-    return () => clearInterval(interval);
-  }, [currentIndex, isHovered, itemsToShow]);
-
+  // Custom loop logic for more items
   const handleNext = () => {
-    setCurrentIndex((prev) => {
-        const maxIndex = plotCategories.length - itemsToShow;
-        return prev >= maxIndex ? 0 : prev + 1;
-    });
+    setCurrentIndex((prev) => (prev + 1) % plotCategories.length);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => {
-        const maxIndex = plotCategories.length - itemsToShow;
-        return prev <= 0 ? maxIndex : prev - 1;
-    });
+    setCurrentIndex((prev) => (prev - 1 + plotCategories.length) % plotCategories.length);
   };
 
-  // Handle Drag / Swipe
-  const onDragEnd = (event, info) => {
-    const threshold = 30; // More sensitive
-    const velocityThreshold = 500;
-    
-    if (info.offset.x < -threshold || info.velocity.x < -velocityThreshold) {
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
       handleNext();
-    } else if (info.offset.x > threshold || info.velocity.x > velocityThreshold) {
-      handlePrev();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [currentIndex, isHovered]);
+
+  // Calculate position and scale for each card
+  const getCardStyles = (index) => {
+    const diff = index - currentIndex;
+    
+    // Normalize diff for circular carousel
+    let normalizedDiff = diff;
+    if (Math.abs(diff) > plotCategories.length / 2) {
+      normalizedDiff = diff > 0 ? diff - plotCategories.length : diff + plotCategories.length;
     }
+
+    const isActive = normalizedDiff === 0;
+    const isSide = Math.abs(normalizedDiff) === 1;
+
+    // Responsive spacing
+    const xOffset = windowWidth <= 480 ? 160 : windowWidth <= 768 ? 220 : 300;
+
+    return {
+      scale: isActive ? 1.2 : isSide ? 0.85 : 0.7,
+      opacity: isActive ? 1 : isSide ? 0.6 : 0.4,
+      zIndex: isActive ? 10 : isSide ? 5 : 1,
+      x: normalizedDiff * xOffset, // Dynamic distance between items
+      rotateY: normalizedDiff * -15, // Subtle 3D rotation
+    };
   };
 
   return (
-    <section className="plot-carousel-section">
-      <div className="carousel-container">
-        <div className="heading-wrapper">
-            <span className="section-badge">Our Portfolios</span>
-            <h2 className="carousel-heading-custom">Find Your Dream Plots With Aerocity</h2>
-            <div className="heading-line"></div>
+    <section className="plot-carousel-section-new">
+      <div className="carousel-container-new">
+        <div className="heading-wrapper-new">
+            <span className="section-badge">Exclusive Portfolios</span>
+            <h2 className="carousel-heading-custom">Our Prime Locations</h2>
         </div>
-        
+
         <div 
-          className="carousel-viewport"
+          className="carousel-viewport-new"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <motion.div 
-            ref={trackRef}
-            className="carousel-track"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.2}
-            onDragEnd={onDragEnd}
-            animate={{ x: `-${currentIndex * (100 / itemsToShow)}%` }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            whileTap={{ cursor: "grabbing" }}
-          >
-            {plotCategories.map((plot) => (
-              <div 
-                key={plot.id} 
-                className="plot-card-wrapper"
-                style={{ flex: `0 0 ${100 / itemsToShow}%` }}
-              >
-                <div className="plot-card">
-                    <div className="plot-image-container">
-                        <img 
-                            src={plot.image} 
-                            alt={plot.title} 
-                            className="plot-image" 
-                            draggable={false}
-                        />
+          {/* Navigation Buttons */}
+          <button className="nav-btn-circle prev" onClick={handlePrev}>
+            <ChevronLeft size={24} />
+          </button>
+          
+          <button className="nav-btn-circle next" onClick={handleNext}>
+            <ChevronRight size={24} />
+          </button>
+
+          <div className="cards-stage">
+            {plotCategories.map((plot, index) => {
+              const styles = getCardStyles(index);
+              return (
+                <motion.div 
+                  key={plot.id} 
+                  className="plot-card-new"
+                  initial={false}
+                  animate={{
+                    scale: styles.scale,
+                    opacity: styles.opacity,
+                    zIndex: styles.zIndex,
+                    x: styles.x,
+                    rotateY: styles.rotateY
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                >
+                  <div className="card-image-wrapper">
+                    <img src={plot.image} alt={plot.title} />
+                    <div className="card-overlay-text">
+                        <h3 className="card-title-minimal">{plot.title}</h3>
                     </div>
-                    <div className="plot-info">
-                        <h3>{plot.title}</h3>
-                        <p className="plot-desc-small">Prime locations with high appreciation potential across Mumbai 3.0.</p>
-                    </div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Dots */}
+        <div className="carousel-dots-minimal">
+          {plotCategories.map((_, index) => (
+            <button
+              key={index}
+              className={`dot-minimal ${currentIndex === index ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+            />
+          ))}
         </div>
       </div>
     </section>

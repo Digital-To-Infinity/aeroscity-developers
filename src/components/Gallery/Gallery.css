@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 
 .showcase-section {
-    background-color: #1a1a1a;
+    background-color: #ffffff;
     padding: 80px 20px;
     overflow-x: hidden;
 }
@@ -13,18 +12,14 @@
 }
 
 .showcase-header h2 {
-    font-family: "Syne", sans-serif;
     font-size: 3rem;
-    color: #c5a059;
     margin-bottom: 10px;
 }
 
 .showcase-header p {
-    font-family: 'Lato', sans-serif;
     font-size: 1.2rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #888;
 }
 
 .showcase-container {
@@ -56,18 +51,17 @@
     justify-content: center;
     text-align: center;
     padding: 30px;
-    border-top: 5px solid #c5a059;
+    border-top: 5px solid #CA1D37;
 }
 
 .spine-content h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
-    color: #3D3D3D;
     margin-bottom: 5px;
 }
 
 .spine-content h5 {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     color: #c5a059;
     text-transform: uppercase;
@@ -76,7 +70,7 @@
 }
 
 .spine-content p {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.95rem;
     color: #3D3D3D;
     line-height: 1.6;

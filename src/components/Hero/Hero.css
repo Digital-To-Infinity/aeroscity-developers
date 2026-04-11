@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
-
 .sticky-track {
     height: 400vh;
     position: relative;
@@ -35,6 +33,23 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 2;
+    transition: background-color 0.8s ease;
+}
+
+.hero-overlay.image-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.hero-image-content {
+    object-fit: fill !important; 
+    background-color: #000;
+    margin-top: 70px;
+    animation: softZoom 20s infinite alternate ease-in-out;
+}
+
+@keyframes softZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
 }
 
 .hero-contents,
@@ -48,80 +63,23 @@
 
 .main-title h1 {
     font-size: 4rem;
-    font-family: "Syne", sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     margin-bottom: 10px;
+    color: #ffffff !important;
 }
 
 .main-title p {
     font-size: 1.5rem;
-    font-family: "Syne", sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff !important;
 }
 
-.second-video-layout {
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 40px;
-    text-align: left !important;
-}
 
-.hero-split-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-}
 
-.hero-left {
-    flex: 1.2;
-}
 
-.hero-left h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    margin: 0;
-}
 
-.hero-right {
-    flex: 0.8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.pop-up-hero-img {
-    width: 100%;
-    max-width: 700px;
-    height: 400px;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@media (max-width: 1024px) {
-    .hero-left h1 {
-        font-size: 2.8rem;
-    }
-    .pop-up-hero-img {
-        max-width: 400px;
-    }
-}
-
-@media (max-width: 768px) {
-    .second-video-layout {
-        text-align: center !important;
-    }
-    .hero-split-content {
-        flex-direction: column;
-        gap: 30px;
-    }
-    .hero-left h1 {
-        font-size: 2.2rem;
-    }
-    .pop-up-hero-img {
-        max-width: 320px;
-    }
-}
 
 .info-card {
     position: absolute;
@@ -134,8 +92,10 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     gap: 60px;
-    padding: 0 5%;
+    padding: 90px 5% 20px 5%;
+    box-sizing: border-box;
     z-index: 10;
     opacity: 0;
     pointer-events: none;
@@ -145,18 +105,18 @@
 
 .info-card-desc {
     width: 50%;
-    margin-top: 100px;
+    margin-top: 0;
 }
 
 .info-card-desc img {
     width: 100%;
-    height: 300px;
+    height: 400px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .info-card-desc h2 {
-    font-family: "Syne", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
     color: #c5a059;
     margin-bottom: 15px;
@@ -182,6 +142,15 @@
 }
 
 .bottom-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.top-card {
+    transform: translateY(-100px);
+}
+
+.top-card.active {
     opacity: 1;
     transform: translateY(0);
 }
@@ -220,7 +189,7 @@
     }
 
     .info-card-desc {
-        margin-top: 130px;
+        margin-top: 0;
     }
 
     .info-card-desc h2 {
@@ -231,7 +200,7 @@
 
 @media (max-width: 900px) {
     .info-card-desc {
-        margin-top: 110px;
+        margin-top: 0;
     }
 
     .info-card-desc h2 {
@@ -246,7 +215,7 @@
 
 @media (max-width: 800px) {
     .info-card-desc {
-        margin-top: 100px;
+        margin-top: 0;
     }
 
     .info-card-desc img {
@@ -264,95 +233,82 @@
 
 @media (max-width: 768px) {
     .main-title h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+
+    .info-card {
+        padding-top: 100px;
+        gap: 20px;
+        height: 100vh;
     }
 
     .info-card-desc {
-        margin-top: 100px;
+        width: 100%;
+        max-width: 500px;
     }
 
-    .info-card-desc h2 {
-        font-size: 1rem;
-    }
-
-    .info-card-desc p {
-        font-size: 0.9rem;
-        line-height: 1.3;
-    }
-}
-
-@media (max-width: 700px) {
     .info-card-desc img {
         height: 220px;
-    }
-
-    .info-card-desc h2 {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .info-card-desc img {
-        height: 200px;
-    }
-
-    .info-card-desc h2 {
-        font-size: 0.80rem;
-    }
-
-    .info-card-desc p {
-        font-size: 0.8rem;
+        object-fit: cover;
     }
 }
 
 @media (max-width: 500px) {
-    .main-title h1 {
-        font-size: 2rem;
-        margin-bottom: 5px;
-    }
-
-    .main-title p {
-        font-size: 1rem;
-    }
-
     .info-card {
         flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 10px;
-        padding: 60px 20px 20px 20px;
-        height: 100vh;
-        margin-top: 10px;
+        justify-content: flex-start;
+        padding: 100px 15px 40px;
+        gap: 20px;
+        overflow-y: auto;
+        background: #f8f9fa;
     }
 
     .info-card-desc {
         width: 100%;
-        margin-top: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex: 1;
-        max-height: 45%;
+        max-height: none;
+        flex: none;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 5px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border: 1px solid #f0f0f0;
     }
 
     .info-card-desc img {
-        width: 100%;
-        height: 280px;
-        object-fit: fill;
-        border-radius: 8px;
-        margin-bottom: 8px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 12px;
+        display: block;
     }
 
     .info-card-desc h2 {
-        font-size: 1.2rem;
-        margin-bottom: 5px;
-        line-height: 1.2;
+        font-size: 1.1rem;
+        margin: 10px;
+        color: #CA1D37;
+        font-weight: 600;
+        text-align: center;
     }
 
     .info-card-desc p {
-        font-size: 0.7rem;
-        line-height: 1.1;
-        overflow: hidden;
+        font-size: 0.85rem;
+        padding: 0 10px 10px;
+        color: #666;
+    }
+}
+
+@media (max-height: 700px) and (max-width: 500px) {
+    .info-card {
+        padding-top: 80px;
+        gap: 15px;
+    }
+    
+    .info-card-desc img {
+        height: 150px;
+    }
+
+    .info-card-desc h2 {
+        font-size: 1rem;
     }
 }
 

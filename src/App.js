@@ -10,7 +10,7 @@ import AboutUs from "./pages/AboutUs";
 import LegalPage from "./pages/LegalPage";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import BackToTop from "./components/BackToTop/BackToTop";
-import ContactPopup from "./components/ContactPopup/ContactPopup";
+// import ContactPopup from "./components/ContactPopup/ContactPopup";
 
 function App() {
 
@@ -45,7 +45,7 @@ function App() {
           </Routes>
           <FloatingContact />
           <BackToTop />
-          <ContactPopup />
+          {/* <ContactPopup /> */}
         </>
       )}
     </>

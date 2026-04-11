@@ -1,36 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 .contact-section {
-    background: linear-gradient(120deg,
-            #000000 0%,
-            #1a1a1a 35%,
-            #4a3b18 50%,
-            #1a1a1a 65%,
-            #000000 100%);
-
-    background-size: 250% 250%;
-    animation: goldSheen 8s ease-in-out infinite;
+    background: #ffffff;
     padding: 80px 20px;
-    color: #fff;
-    font-family: 'Lato', sans-serif;
+    color: #1a1a1a;
+    font-family: 'Poppins', sans-serif;
     overflow: hidden;
     margin-top: 80px;
     min-height: 80vh;
-}
-
-@keyframes goldSheen {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .container {
@@ -44,17 +20,13 @@
 }
 
 .section-header h2 {
-    font-family: "Syne", sans-serif;
     font-size: 3rem;
-    background: linear-gradient(to right, #c5a059, #f0e68c, #c5a059);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #CA1D37;
     margin-bottom: 15px;
 }
 
 .section-header p {
-    color: #aaa;
+    color: #1a1a1a;
     font-size: 1.1rem;
 }
 
@@ -66,12 +38,12 @@
 }
 
 .contact-form-container {
-    background: rgba(20, 20, 20, 0.7);
+    background: #ffffff;
     backdrop-filter: blur(15px);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(197, 160, 89, 0.1);
+    box-shadow: 0 15px 40px rgba(26, 26, 26, 0.1);
+    border: 1px solid rgba(202, 29, 55, 0.1);
 }
 
 .custom-form {
@@ -89,10 +61,10 @@
 .form-group textarea {
     width: 100%;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.4);
+    background: #ffffff;
     border: 1px solid #333;
     border-radius: 8px;
-    color: #fff !important;
+    color: #000000 !important;
     font-size: 1rem;
     outline: none;
     transition: all 0.3s ease;
@@ -105,10 +77,10 @@
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #c5a059;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff !important;
-    box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+    border-color: #CA1D37;
+    background: #ffffff;
+    color: #1a1a1a !important;
+    box-shadow: 0 0 10px rgba(202, 29, 55, 0.2);
 }
 
 .custom-form.form-submitted input:invalid,
@@ -126,7 +98,7 @@
     position: absolute;
     left: 15px;
     top: 15px;
-    color: #888;
+    color: #1a1a1a;
     font-size: 1rem;
     pointer-events: none;
     transition: all 0.3s ease;
@@ -140,8 +112,8 @@
     top: -12px;
     left: 10px;
     font-size: 0.8rem;
-    color: #c5a059;
-    background: #111;
+    color: #CA1D37;
+    background: #ffffff;
     padding: 0 6px;
     border-radius: 4px;
 }
@@ -152,20 +124,20 @@
 .form-group textarea:-webkit-autofill,
 .form-group textarea:-webkit-autofill:hover,
 .form-group textarea:-webkit-autofill:focus {
-    -webkit-text-fill-color: #fff;
+    -webkit-text-fill-color: #1a1a1a;
     transition: background-color 5000s ease-in-out 0s;
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #c5a059 0%, #a67c00 100%);
+    background: #CA1D37;
     color: #fff;
-    border: none;
+    border: 2px solid #CA1D37;
     padding: 15px 30px;
     font-size: 1rem;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -176,8 +148,11 @@
 }
 
 .submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.4);
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(202, 29, 55, 0.4);
 }
 
 .submit-btn:disabled {
@@ -227,14 +202,14 @@
 }
 
 .contact-info-container h3 {
-    font-family: "Syne", sans-serif;
-    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    color: #CA1D37;
     font-size: 1.8rem;
     margin-bottom: 15px;
 }
 
 .info-intro {
-    color: #aaa;
+    color: #1a1a1a;
     margin-bottom: 30px;
 }
 
@@ -254,7 +229,7 @@
 .icon-box {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #c5a059 0%, #a67c00 100%);
+    background: #CA1D37;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -266,7 +241,7 @@
 
 .info-item span,
 .info-item a {
-    color: #ccc;
+    color: #1a1a1a;
     font-size: 1.05rem;
     line-height: 1.6;
     text-decoration: none;
@@ -274,7 +249,7 @@
 }
 
 .info-item a:hover {
-    color: #c5a059;
+    color: #CA1D37;
 }
 
 .map-container {
@@ -282,8 +257,6 @@
     height: 350px;
     border-radius: 15px;
     overflow: hidden;
-    border: 1px solid #444;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 900px) {

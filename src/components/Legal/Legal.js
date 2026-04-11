@@ -32,8 +32,8 @@ const Legal = () => {
                             transaction is fully closed.
                         </p>
                         <ul className="legal-features">
-                            <li><strong>Secure Transition:</strong> Your investment is protected as you only pay once the legal title is officially transferred to you at the Sub-Registrar's office.</li>
-                            <li><strong>Transparent Process:</strong> Every step of the registration is documented and shared with you in real-time.</li>
+                            <li><strong style={{color: "#000000"}}>Secure Transition:</strong> Your investment is protected as you only pay once the legal title is officially transferred to you at the Sub-Registrar's office.</li>
+                            <li><strong style={{color: "#000000"}}>Transparent Process:</strong> Every step of the registration is documented and shared with you in real-time.</li>
                         </ul>
                     </div>
                     <div className="legal-image-container">

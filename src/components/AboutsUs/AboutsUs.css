@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-
 .about-us-wrapper {
-    background-color: #1a1a1a;
-    font-family: 'Lato', sans-serif;
+    background-color: #f4f7f6;
+    font-family: 'Poppins', sans-serif;
     color: #ffffff;
     overflow-x: hidden;
 }
@@ -21,20 +18,20 @@
 h1,
 h2,
 h3 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
 
 .gold-text {
-    color: #c5a059;
+    color: #CA1D37;
 }
 
 .gold-text-hero {
-    color: #c5a059;
+    color: #ffffff;
 }
 
 .gold-overline {
-    color: #c5a059;
+    color: #ffffff;
     letter-spacing: 4px;
     font-weight: 700;
     font-size: 0.9rem;
@@ -43,7 +40,7 @@ h3 {
 }
 
 .gold-subtitle {
-    font-family: 'Lato', monospace;
+    font-family: 'Poppins', sans-serif;
     color: #c5a059;
     letter-spacing: 2px;
     margin-bottom: 10px;
@@ -51,6 +48,28 @@ h3 {
 
 .center {
     text-align: center;
+}
+
+.section-header {
+    margin-bottom: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.section-header p {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 20px auto 0;
 }
 
 .overflow-hidden {
@@ -91,6 +110,10 @@ h3 {
     position: relative;
     z-index: 2;
     text-align: center;
+}
+
+.hero-title-white {
+    color: #ffffff !important;
 }
 
 .hero-content h1 {
@@ -162,7 +185,7 @@ h3 {
     align-items: center;
     justify-content: center;
     color: #c5a059;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Poppins', sans-serif;
     opacity: 0.5;
 }
 
@@ -172,7 +195,7 @@ h3 {
     left: 0;
     height: 100%;
     overflow: hidden;
-    border-right: 3px solid #c5a059;
+    border-right: 3px solid #CA1D37;
     z-index: 2;
 }
 
@@ -183,72 +206,158 @@ h3 {
 }
 
 .values-section {
-    background: radial-gradient(circle at center, #252525 0%, #1a1a1a 70%);
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
 }
 
 .cards-grid-3d {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
     margin-top: 60px;
-    perspective: 1000px;
+    perspective: 2000px;
+    padding: 20px 0;
 }
 
 .value-card-3d {
-    background: rgba(40, 40, 40, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 40px 30px;
-    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    padding: 50px 35px;
+    border-radius: 28px;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
     cursor: pointer;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04), 0 5px 15px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform-style: preserve-3d;
 }
 
-.icon-wrapper {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #1a1a1a, #000);
-    border: 1px solid #c5a059;
+.value-card-3d:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(202, 29, 55, 0.05);
+    border-color: rgba(202, 29, 55, 0.2);
+    transform: translateY(-10px) !important;
+}
+
+.card-background-pattern {
+    position: absolute;
+    top: -20%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(202, 29, 55, 0.03) 0%, transparent 70%);
     border-radius: 50%;
+    pointer-events: none;
+    transition: all 0.6s ease;
+}
+
+.value-card-3d:hover .card-background-pattern {
+    transform: scale(1.5);
+    background: radial-gradient(circle, rgba(202, 29, 55, 0.05) 0%, transparent 70%);
+}
+
+.icon-container {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #c5a059;
-    margin-bottom: 25px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: translateZ(20px);
+}
+
+.icon-circle-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fdf2f4;
+    border-radius: 20px;
+    transform: rotate(45deg);
+    transition: all 0.4s ease;
+}
+
+.value-card-3d:hover .icon-circle-bg {
+    background: #CA1D37;
+    transform: rotate(90deg);
+}
+
+.card-icon {
+    color: #CA1D37;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+
+.value-card-3d:hover .card-icon {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    transform: translateZ(30px);
 }
 
 .value-card-3d h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    color: #1a1a1a;
     margin-bottom: 15px;
+    font-weight: 700;
+    transition: color 0.3s ease;
 }
 
 .value-card-3d p {
-    color: #a0a0a0;
-    line-height: 1.6;
+    color: #666666;
+    line-height: 1.7;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-.card-border-glow {
+.value-card-3d:hover h3 {
+    color: #CA1D37;
+}
+
+.card-footer-line {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 5px;
-    background: #c5a059;
-    opacity: 0;
-    transition: opacity 0.3s;
+    width: 0;
+    height: 4px;
+    background: #CA1D37;
+    transition: width 0.4s ease;
 }
 
-.value-card-3d:hover .card-border-glow {
+.value-card-3d:hover .card-footer-line {
+    width: 100%;
+}
+
+.card-hover-accent {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 8px;
+    height: 8px;
+    background: #CA1D37;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.value-card-3d:hover .card-hover-accent {
     opacity: 1;
+    transform: scale(1);
 }
 
 .blueprint-section {
     border-top: 1px solid rgba(197, 160, 89, 0.2);
     position: relative;
-    background-color: #3d3d3d;
+    background-color: #ffffff;
 }
 
 .blueprint-flex {
@@ -274,7 +383,7 @@ h3 {
 
 .gold-stroke {
     color: transparent;
-    -webkit-text-stroke: 2px #c5a059;
+    -webkit-text-stroke: 2px #CA1D37;
 }
 
 .blueprint-steps {
@@ -293,11 +402,11 @@ h3 {
 }
 
 .step-number {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 4rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.05);
-    -webkit-text-stroke: 1px #c5a059;
+    -webkit-text-stroke: 1px #CA1D37;
     line-height: 0.8;
 }
 
@@ -373,6 +482,11 @@ h3 {
         padding-top: 0px;
         padding-bottom: 0px;
         gap: 50px;
+    }
+
+    .section-header h2 {
+        font-size: 2.6rem;
+        margin-bottom: 0px;
     }
 }
 
